@@ -163,6 +163,7 @@ class User {
 }
 
 
+
 const user1 = new User("Aminat", "host");
 User.greet("Tobi");
 user1.createGuest();
