@@ -48,13 +48,13 @@ class Member {
     }
     information() {
         var _a;
-        console.log(`This members name is ${this.name}, they joined on ${this.dateJoined},`);
+        console.log(`This members name is ${this.name}, member joined on ${this.dateJoined},`);
         if (this.readBooksCount > 0) {
-            console.log(`They have read ${this.readBooksCount} books, 
+            console.log(`member have read ${this.readBooksCount} books, 
         the last one being ${(_a = this.lastReadBook) === null || _a === void 0 ? void 0 : _a.title}.`);
         }
         else {
-            console.log("They haven't read any books yet.");
+            console.log("member haven't read any books yet.");
         }
     }
     test() {
@@ -72,46 +72,3 @@ member1.information();
 member2.information();
 member1.test();
 member2.test();
-// ASSIGNMENT 2: Simple Task Manager
-// Description:
-// A task manager to create, update, complete, and list tasks.
-console.log("...Assinment 2...");
-// Class tasks - an class representing a task as on object.
-// properties:
-// task - the task
-// completed - a boolen that is true if the task has been done
-// dueby - the day of the wek it has to be done by
-// methods:
-// constructor function
-// details() - lists out the task, if it is completed and when it is due
-// check()- Marks the task as completed.
-class Task {
-    constructor(task, dueBy) {
-        this.task = task;
-        this.completed = false;
-        this.dueBy = dueBy;
-    }
-    details() {
-        console.log(`You have to ${this.task},`);
-        if (this.completed == true)
-            console.log(`You already completed this task`);
-        else
-            console.log(`it is due by ${this.dueBy}.`);
-    }
-    check() {
-        if (this.completed == true)
-            console.log(`you have already ticked this completed`);
-        else {
-            this.completed = true;
-            console.log(`Completed task`);
-        }
-    }
-}
-//test
-const task1 = new Task("take out trach", "Friday");
-const task2 = new Task("attend hatchdev class", "friday 4pm");
-const task3 = new Task("submit assignment", "thurday");
-task2.check();
-task1.details();
-task2.details();
-task3.details();
