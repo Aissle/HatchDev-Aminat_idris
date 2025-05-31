@@ -3,7 +3,7 @@
 
 // Class Array  - an immitation of an array
 // property: data: an array of type T(varies)
-class Arrays<T> {
+class ArrayAminat<T> {
   private data: T[];
 
   constructor(data: T[]) {
@@ -113,7 +113,7 @@ class Arrays<T> {
 }
 
 //test
-const arr8 = new Arrays<number>([6, 7, 8, 9, 0]);
+const arr8 = new ArrayAminat<number>([6, 7, 8, 9, 0]);
 console.log(arr8.slice(1, 4));
 arr8.push(6);
 console.log(arr8.getData());
