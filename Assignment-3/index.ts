@@ -21,7 +21,6 @@ class Arrays<T> {
       }
     }
 
-    
     return result;
   }
 
@@ -97,7 +96,17 @@ class Arrays<T> {
     return result;
   }
 
-  //9 - View current array state
+  // 9 - returns true if the array contains a specific value.
+  includes(value: T): boolean {
+    for (let i = 0; i < this.data.length; i++) {
+      if (this.data[i] === value) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  //10 - View current array state
   getData(): T[] {
     return this.data;
   }
@@ -114,3 +123,5 @@ console.log(arr8.map((x) => x * 3));
 console.log(arr8.find((x) => x > 3));
 console.log(arr8.reduce((sum, x) => sum + x, 0));
 console.log(arr8.reverse());
+console.log(arr8.includes(9));
+console.log(arr8.includes(100));
