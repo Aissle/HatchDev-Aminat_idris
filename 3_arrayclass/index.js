@@ -3,7 +3,7 @@
 // similar to functions that can be performed on arrays such as  split()
 // Class Array  - an immitation of an array
 // property: data: an array of type T(varies)
-class Arrays {
+class ArrayAminat {
     constructor(data) {
         this.data = data;
     }
@@ -79,19 +79,96 @@ class Arrays {
         }
         return result;
     }
-    //9 - View current array state
+    // 9 - returns true if the array contains a specific value.
+    includes(value) {
+        for (let i = 0; i < this.data.length; i++) {
+            if (this.data[i] === value) {
+                return true;
+            }
+        }
+        return false;
+    }
+    //10 - View current array state
     getData() {
         return this.data;
     }
+    // 11. concat()
+    concat(...items) {
+        console.log("hi");
+        const result = [...this.data];
+        for (const item of items) {
+            if (Array.isArray(item)) {
+                result.push(...item);
+            }
+            else {
+                result.push(item);
+            }
+        }
+        return result;
+    }
+    // 12. join()
+    join(separator = ",") {
+        let result = "";
+        for (let i = 0; i < this.data.length; i++) {
+            if (i > 0)
+                result += separator;
+            result += String(this.data[i]);
+        }
+        return result;
+    }
+    // 13. some()
+    some(callback) {
+        for (let i = 0; i < this.data.length; i++) {
+            if (callback(this.data[i], i, this.data)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    // 14. every()
+    every(callback) {
+        for (let i = 0; i < this.data.length; i++) {
+            if (!callback(this.data[i], i, this.data)) {
+                return false;
+            }
+        }
+        return true;
+    }
+    // 15. indexOf()
+    indexOf(searchElement, fromIndex = 0) {
+        for (let i = fromIndex; i < this.data.length; i++) {
+            if (this.data[i] === searchElement) {
+                return i;
+            }
+        }
+        return -1;
+    }
+    sort(compareFn) {
+        for (let i = 0; i < this.data.length - 1; i++) {
+            for (let j = i + 1; j < this.data.length; j++) {
+                const shouldSwap = compareFn
+                    ? compareFn(this.data[i], this.data[j]) > 0
+                    : String(this.data[i]) > String(this.data[j]);
+                if (shouldSwap) {
+                    const temp = this.data[i];
+                    this.data[i] = this.data[j];
+                    this.data[j] = temp;
+                }
+            }
+        }
+    }
 }
 //test
-const arr8 = new Arrays([6, 7, 8, 9, 0]);
+const arr8 = new ArrayAminat([6, 7, 8, 9, 0]);
 console.log(arr8.slice(1, 4));
 arr8.push(6);
-console.log(arr8.getData());
-console.log(arr8.pop());
-console.log(arr8.filter((x) => x % 2 === 0));
-console.log(arr8.map((x) => x * 3));
-console.log(arr8.find((x) => x > 3));
-console.log(arr8.reduce((sum, x) => sum + x, 0));
-console.log(arr8.reverse());
+// console.log(arr8.getData());
+// console.log(arr8.pop());
+// console.log(arr8.filter((x) => x % 2 === 0));
+// console.log(arr8.map((x) => x * 3));
+// console.log(arr8.find((x) => x > 3));
+// console.log(arr8.reduce((sum, x) => sum + x, 0));
+// console.log(arr8.reverse());
+// console.log(arr8.includes(9));
+// console.log(arr8.includes(100));
+console.log(arr8.concat([1, 2, 3]));

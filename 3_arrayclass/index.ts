@@ -110,18 +110,89 @@ class ArrayAminat<T> {
   getData(): T[] {
     return this.data;
   }
+
+  // 11. concat()
+  concat(...items: (T | T[])[]): T[] {
+    console.log("hi");
+    const result = [...this.data];
+    for (const item of items) {
+      if (Array.isArray(item)) {
+        result.push(...item);
+      } else {
+        result.push(item);
+      }
+    }
+    return result;
+  }
+
+  // 12. join()
+  join(separator: string = ","): string {
+    let result = "";
+    for (let i = 0; i < this.data.length; i++) {
+      if (i > 0) result += separator;
+      result += String(this.data[i]);
+    }
+    return result;
+  }
+
+  // 13. some()
+  some(callback: (value: T, index: number, array: T[]) => boolean): boolean {
+    for (let i = 0; i < this.data.length; i++) {
+      if (callback(this.data[i], i, this.data)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  // 14. every()
+  every(callback: (value: T, index: number, array: T[]) => boolean): boolean {
+    for (let i = 0; i < this.data.length; i++) {
+      if (!callback(this.data[i], i, this.data)) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  // 15. indexOf()
+  indexOf(searchElement: T, fromIndex: number = 0): number {
+    for (let i = fromIndex; i < this.data.length; i++) {
+      if (this.data[i] === searchElement) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  // 16
+  sort(compareFn?: (a: T, b: T) => number): void {
+    for (let i = 0; i < this.data.length - 1; i++) {
+      for (let j = i + 1; j < this.data.length; j++) {
+        const shouldSwap = compareFn
+          ? compareFn(this.data[i], this.data[j]) > 0
+          : String(this.data[i]) > String(this.data[j]);
+        if (shouldSwap) {
+          const temp = this.data[i];
+          this.data[i] = this.data[j];
+          this.data[j] = temp;
+        }
+      }
+    }
+  }
 }
 
 //test
 const arr8 = new ArrayAminat<number>([6, 7, 8, 9, 0]);
 console.log(arr8.slice(1, 4));
 arr8.push(6);
-console.log(arr8.getData());
-console.log(arr8.pop());
-console.log(arr8.filter((x) => x % 2 === 0));
-console.log(arr8.map((x) => x * 3));
-console.log(arr8.find((x) => x > 3));
-console.log(arr8.reduce((sum, x) => sum + x, 0));
-console.log(arr8.reverse());
-console.log(arr8.includes(9));
-console.log(arr8.includes(100));
+// console.log(arr8.getData());
+// console.log(arr8.pop());
+// console.log(arr8.filter((x) => x % 2 === 0));
+// console.log(arr8.map((x) => x * 3));
+// console.log(arr8.find((x) => x > 3));
+// console.log(arr8.reduce((sum, x) => sum + x, 0));
+// console.log(arr8.reverse());
+// console.log(arr8.includes(9));
+// console.log(arr8.includes(100));
+console.log(arr8.concat([1, 2, 3]));
