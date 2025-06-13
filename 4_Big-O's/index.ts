@@ -1,3 +1,4 @@
+// big O's and 2 examples each
 // O(1) — Constant Time Algorithms
 function getFirstElement<T>(arr: T[]): T | undefined {
   return arr[0];
