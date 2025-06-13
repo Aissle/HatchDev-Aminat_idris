@@ -53,33 +53,39 @@ class MusicPlayer {
         if (currentNode.song === song) break;
         currentNode = currentNode.next;
       }
-      //if first song, but not only song
-      if (currentNode!.prev === null && currentNode!.next !== null) {
-        //console.log(currentNode);
-        this.firstSong = currentNode!.next;
-        //console.log(this.firstSong);
-        this.firstSong!.prev = null;
-        //console.log(this.firstSong);
-      }
-      // if last song but not only song
-      else if (currentNode!.next === null && currentNode!.prev !== null) {
-        //console.log(currentNode);
-        currentNode!.prev.next = null;
-        //console.log(currentNode);
-        currentNode!.prev = null;
-        //console.log(currentNode);
-      }
-      //if only song
-      else if (currentNode!.next === null && currentNode!.prev === null) {
-        this.firstSong = null;
-      }
-      //if neither first, nor last, nor only song - just a middle song
-      else {
-        currentNode!.next!.prev = currentNode!.prev;
-        currentNode!.prev!.next = currentNode!.next;
-      }
+
+      if (currentNode) {
+        //if first song, but not only song
+        if (currentNode.prev === null && currentNode.next !== null) {
+          //console.log(currentNode);
+          this.firstSong = currentNode.next;
+          //console.log(this.firstSong);
+          this.firstSong.prev = null;
+          //console.log(this.firstSong);
+        }
+        // if last song but not only song
+        else if (currentNode.next === null && currentNode.prev !== null) {
+          //console.log(currentNode);
+          currentNode.prev.next = null;
+          //console.log(currentNode);
+          currentNode.prev = null;
+          //console.log(currentNode);
+        }
+        //if only song
+        else if (currentNode.next === null && currentNode.prev === null) {
+          this.firstSong = null;
+        }
+        //if neither first, nor last, nor only song - just a middle song
+        else {
+          currentNode.next!.prev = currentNode.prev;
+          currentNode.prev!.next = currentNode.next;
+        }
+        console.log(`song ${song} deleted from ${this.title} music player`);
+      } else
+        console.log(
+          `song ${song} does not exist in ${this.title} music player`
+        );
     }
-    console.log(`song ${song} deleted from ${this.title} music player`);
   }
 
   public DisplayPlaylist() {
@@ -173,7 +179,7 @@ class MusicPlayer {
         console.log(`song ${song} not in ${this.title} music player`);
       else {
         for (let i = 1; i <= 6; i++) {
-          console.log(`${currentNode!.song} is playing`);
+          console.log(`${currentNode.song} is playing`);
         }
         console.log("Done");
       }
