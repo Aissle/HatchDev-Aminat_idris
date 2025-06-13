@@ -1,4 +1,5 @@
 "use strict";
+// big O's and 2 examples each
 // O(1) — Constant Time Algorithms
 function getFirstElement(arr) {
     return arr[0];

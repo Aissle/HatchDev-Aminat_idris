@@ -1,11 +1,5 @@
 "use strict";
 // assignments...
-//  5. Build your hashmap, handle your own collision and create your own hash function
-// 6. Array challenges on hackerrank (easy)
-// 7. Study and build your own linked list ( doubly,
-// 8. circular)
-// 9. Build a music playlist, implement the circular linked list you studied and learnt about (implement shuffle, repeat, delete, reverse, add and other features you want)
-// 10. 5 more methods in array class
 //Assignment 8 - circular linked list
 class Cnode {
     constructor(Ivalue) {
