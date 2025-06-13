@@ -187,7 +187,7 @@ class MusicPlayer {
   }
 }
 
-function runTests() {
+function tests() {
   const player = new MusicPlayer("MyPlaylist", "Song1");
 
   console.log("\n--- Add Songs Test ---");
@@ -237,4 +237,4 @@ function runTests() {
   player.DisplayPlaylist();
 }
 
-runTests();
+tests();
