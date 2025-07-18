@@ -32,6 +32,21 @@ class DoublyLList {
       currentNode.next = newNode;
     }
   }
+
+  public reverse() {
+    let current: Dnode | null = this.head;
+    while (current) {
+      if (current.next == null) this.head = current;
+      //store the next value in cont next
+      const next: Dnode | null = current?.next;
+      //set the next value to thr prev value.
+      current.next = current?.prev;
+      //set the prev value to the next value
+      current!.prev = next;
+      //set current to next
+      current = next;
+    }
+  }
 }
 
 const dlist = new DoublyLList(0);
@@ -39,4 +54,7 @@ console.log(dlist);
 dlist.add(10);
 dlist.add(20);
 dlist.add(30);
-console.log(dlist.head?.next?.next?.value);
+console.log(dlist);
+dlist.reverse();
+console.log(dlist);
+//console.log(dlist.head?.next?.next?.value);
